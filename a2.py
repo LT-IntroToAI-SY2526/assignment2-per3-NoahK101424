@@ -36,7 +36,14 @@ def match(pattern: List[str], source: List[str]) -> List[str]:
         # WARNING: this condition contains the bulk of the code for the assignment
         # If you get stuck on this one, we encourage you to attempt the other conditions
         #   and come back to this one afterwards
-
+        elif pattern[pind] == "%":
+            if pind == len(pattern) - 1:
+                combined = " ".join(source[sind:])
+                result.append(combined)
+                print(result)
+                return result
+            else:
+                return None
 
         # 3) if we reached the end of the source but not the pattern
         elif sind == len(source) and pind < len(pattern):
@@ -45,7 +52,7 @@ def match(pattern: List[str], source: List[str]) -> List[str]:
 
         # 4) if the current thing in the pattern is an _
         elif pattern[pind] == "_":
-            result.append(source[pind])
+            result.append(source[sind])
             pind += 1
             sind += 1
 
